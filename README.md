@@ -8,7 +8,7 @@ datasets: https://drive.google.com/file/d/1UNPPyIyMFCuRUkZodLrBcJR1Pt39PqiR/view
 | Dataset                |   Shape   | Image count | Organ                               | Notes                                                                                                           |
 |------------------------|:---------:|------------:|-------------------------------------|-----------------------------------------------------------------------------------------------------------------|
 | 105US                  | fan       |         105 | Breast                              | –                                                                                                               |
-| AbdomenUS              | fan       |        1543 | Abdomen (multi-organ)               | –                                                                                                               |
+| AbdomenUS              | fan       |        1543 | Abdomen (multi-organ)               | 100 liver                                                                                                            |
 | ACOUSLIC               | –         |          –  | Fetal abdomen                       | Restricted access                                                                                               |
 | ASUS                   | –         |          –  | Multi-organ (POCUS)                 | can't find                                                                                                      |
 | AUL                    | fan       |         200 | Liver                               | –                                                                                                               |
