@@ -15,7 +15,7 @@ datasets: https://drive.google.com/file/d/1UNPPyIyMFCuRUkZodLrBcJR1Pt39PqiR/view
 | brachial_plexus        | –         |          –  | Brachial plexus nerve               | Video files                                                                                                     |
 | BrEaST                 | rectangular |        256 | Breast                              | –                                                                                                               |
 | BUID                   | rectangular |        232 | Breast                              | –                                                                                                               |
-| BUS_UC                 | rectangular |        489 | Breast                              | –                                                                                                               |
+| BUS_UC                 | rectangular |        489 | Breast                              |  366 benign images, 489 mali images.                                                                                                               |
 | BUS_UCML               | rectangular |        683 | Breast                              | –                                                                                                               |
 | BUS-BRA                | rectangular |       1875 | Breast                              | –                                                                                                               |
 | BUS (Dataset B)        | –         |          –  | Breast                              | Restricted access                                                                                               |
