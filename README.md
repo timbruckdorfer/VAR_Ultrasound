@@ -11,7 +11,7 @@ datasets: https://drive.google.com/file/d/1UNPPyIyMFCuRUkZodLrBcJR1Pt39PqiR/view
 | AbdomenUS              | fan       |        1543 | Abdomen (multi-organ)               | 100 liver                                                                                                            |
 | ACOUSLIC               | –         |          –  | Fetal abdomen                       | Restricted access                                                                                               |
 | ASUS                   | –         |          –  | -                                   | can't find                                                                                                      |
-| AUL                    | fan       |         200 | Liver                               | –                                                                                                               |
+| AUL                    | fan       |         735 | Liver                               | –                                                                                                               |
 | brachial_plexus        | –         |          –  | Brachial plexus nerve               | Video files                                                                                                     |
 | BrEaST                 | rectangular |        256 | Breast                              | –                                                                                                               |
 | BUID                   | rectangular |        232 | Breast                              | –                                                                                                               |
