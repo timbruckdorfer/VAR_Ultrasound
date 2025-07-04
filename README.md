@@ -1,8 +1,6 @@
 # VAR_Ultrasound
 Implementation of Visual Autoregressive Modeling in Ultrasound Images
 
-datasets: https://drive.google.com/file/d/1UNPPyIyMFCuRUkZodLrBcJR1Pt39PqiR/view?usp=drive_link
-
 
 
 | Dataset                |   Shape   | Image count | Organ                               | Notes                                                                                                           |
@@ -51,4 +49,16 @@ datasets: https://drive.google.com/file/d/1UNPPyIyMFCuRUkZodLrBcJR1Pt39PqiR/view
 | UPBD                   | rectangular |        955 | Brachialis plexus                   | –                                                                                                               |
 | US nerve Segmentation  | –         |          –  | –                                   | .tif files                                                                                                      |
 
+Selection of organs:
+- kidney (Tim)
+- fetal head (Tim)
+- thyroid (Tim)
+- breast (Yiping)
+- heart (Yiping)
+- liver (Yiping)
 
+Training of VQ-VAE:
+Training pipeline prepared --> training with whole datasets planned
+
+Training of VAR:
+Not yet implemented
