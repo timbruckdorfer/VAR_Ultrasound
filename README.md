@@ -58,9 +58,9 @@ Selection of organs:
 - liver (Yiping)
 
 Data preprocessing Tim:
-- datasets: kidneyUS, HC, TN3K (consisting of 3 datasets)
+- datasets: kidneyUS, HC, TN3K (consisting of 3 datasets: DDTI, TG3K, TN3K)
 - created general scripts for ultrasound cropping and resizing
-- then customized scripts for kidney, fetal head and one of the thyroid datasets (others already preprocessed properly)
+- then customized cropping script for kidney, fetal head and one of the thyroid datasets (others already preprocessed properly) and resized all of them to 256x256 with the resizing script 
 
 Training of VQ-VAE:
 - Training pipeline for local running with 20 samples per dataset prepared
