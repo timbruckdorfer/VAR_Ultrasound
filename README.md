@@ -98,6 +98,8 @@ Export per-scale 2D token maps from VQ-VAE: tokenize_multiscale_maps.py
 - Inputs: best.pth (include Encoder, quantizer, and codebook vector) from trained VQVAE and Datasets
 - Method: Encode each image per scale → 2D token maps; also concatenate all scales into a 1D sequence idx (N, L). 10 scales follow the VQ-VAE.
 - Outputs: tokens_multiscale_maps.npz (include 2D token for each scale, list of scales, idx, class labels), classes.json (class names)
+
+
 Train VAR (Next-Scale prediction):
 - Inputs: tokens_multiscale_maps.npz from tokenize_multiscale_maps.py, Trained VQ-VAE codebook (to align token embeddings), classes.json.
 - Methods: a VAR transformer is trained via next-scale prediction during training(Teacher Forcing), standard cross-entropy loss is used, Teacher prefix (TP) and COARSE_K are used during sampling
