@@ -85,9 +85,22 @@ Training of VQ-VAE:
 - Training pipeline for local running with 20 samples per dataset prepared
 - Next step: adjust train script for training with all available data (capped at 1000 images per dataset)
 
-Training of VQ-VAE(Yiping side: class balancing):
-
+Training of VQ-VAE(Yiping side: class balancing): train_vqvae.py 
 - Dataset statistics:<img width="1200" height="600" alt="per_class_by_split" src="https://github.com/user-attachments/assets/842876f5-5494-4fe4-9bdc-27536b4413fe" />
-- 
+- Input: Preprocessed ultrasound images (train/, val/, test/), resized to 256×256, RGB grayscale.
+- Core hyperparams (in code): VOCAB_SIZE=2048, v_patch_nums=(1,2,3,4,5,6,8,10,13,16), beta=0.25
+- Method: Multi-scale quantization: from coarse → fine, add residuals across scales to reconstruct rec and compute VQ loss.
+- Loss: loss = SSE_per_image + vq_loss (SSE = sum of squared errors per image).
+- Output: train & val loss curves, PSNR, SSIM, Reconstruction comparisons, Codebook & vectors usage
+
+
+Export per-scale 2D token maps from VQ-VAE: tokenize_multiscale_maps.py
+- Inputs: best.pth (include Encoder, quantizer, and codebook vector) from trained VQVAE and Datasets
+- Method: Encode each image per scale → 2D token maps; also concatenate all scales into a 1D sequence idx (N, L). 10 scales follow the VQ-VAE.
+- Outputs: tokens_multiscale_maps.npz (include 2D token for each scale, list of scales, idx, class labels), classes.json (class names)
+Train VAR (Next-Scale prediction):
+- Inputs: tokens_multiscale_maps.npz from tokenize_multiscale_maps.py, Trained VQ-VAE codebook (to align token embeddings), classes.json.
+- Methods: a VAR transformer is trained via next-scale prediction during training(Teacher Forcing), standard cross-entropy loss is used, Teacher prefix (TP) and COARSE_K are used during sampling
+
 Training of VAR:
 Not yet implemented
