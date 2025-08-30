@@ -1,4 +1,16 @@
 # VAR_Ultrasound
+.
+├── Data preprocessing/              # data prep scripts / notes (by us)
+├── models/                          # models form github: https://github.com/FoundationVision/VAR
+│   └── basic_vae.py                 
+├── README.md                        # ← this file
+├── eval_var.py                      # evaluate samples: KID, usage, entropy, diversity
+├── sample_var.py                    # sweep sampler across coarse scales + TP/NOP
+├── tokenize_multiscale_maps.py      # export per-scale 2D token maps from VQ-VAE
+├── train_var.py                     # train the VAR (next-scale) model
+└── train_vqvae.py                   # train+val+test multi-scale VQ-VAE (with metrics & usage plots)
+
+
 Implementation of Visual Autoregressive Modeling in Ultrasound Images
 
 
@@ -58,13 +70,21 @@ Selection of organs:
 - liver (Yiping)
 
 Data preprocessing Tim:
-- datasets: kidneyUS, HC, TN3K (consisting of 3 datasets: DDTI, TG3K, TN3K)
+- datasets: kidneyUS, HC, TN3K (consisting of 2 datasets: DDTI, TG3K, TN3K)
 - created general scripts for ultrasound cropping and resizing
-- then customized cropping script for kidney, fetal head and one of the thyroid datasets (others already preprocessed properly) and resized all of them to 256x256 with the resizing script 
+- then customized cropping script for kidney, fetal head and one of the thyroid datasets (others already preprocessed properly) and resized all of them to 256x256 with the resizing script
+
+Data preprocessing Yiping:
+- datasets: Breast(consisting of 6 datasets: BUID, BrEaST, BUS_UC, BUS_UCML, BUS-BRA, BUSI) , Heart, Liver (consisting of 3 datasets: AUL, AbdomenUS)
+- Shapes & cropping: breast → rectangular, heart → fan-shape, liver → fan-shape, Resize to 256×256, Convert to RGB-format grayscale
 
 Training of VQ-VAE:
 - Training pipeline for local running with 20 samples per dataset prepared
 - Next step: adjust train script for training with all available data (capped at 1000 images per dataset)
+
+Training of VQ-VAE(Yiping side):
+
+- Dataset statistics:<img width="1200" height="600" alt="per_class_by_split" src="https://github.com/user-attachments/assets/842876f5-5494-4fe4-9bdc-27536b4413fe" />
 
 Training of VAR:
 Not yet implemented
