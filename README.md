@@ -91,7 +91,7 @@ Training of VQ-VAE(Yiping side: class balancing): train_vqvae.py
 - Core hyperparams (in code): VOCAB_SIZE=2048, v_patch_nums=(1,2,3,4,5,6,8,10,13,16), beta=0.25
 - Method: Multi-scale quantization: from coarse → fine, add residuals across scales to reconstruct rec and compute VQ loss.
 - Loss: loss = SSE_per_image + vq_loss (SSE = sum of squared errors per image).
-- Output: train & val loss curves, PSNR, SSIM, Reconstruction comparisons, Codebook & vectors usage
+- Output: train & val loss curves, PSNR, SSIM, Reconstruction comparisons, Codebook & vectors usage, best.pth (model weight)
 
 
 Export per-scale 2D token maps from VQ-VAE: tokenize_multiscale_maps.py
@@ -100,9 +100,20 @@ Export per-scale 2D token maps from VQ-VAE: tokenize_multiscale_maps.py
 - Outputs: tokens_multiscale_maps.npz (include 2D token for each scale, list of scales, idx, class labels), classes.json (class names)
 
 
-Train VAR (Next-Scale prediction):
+Train VAR (Next-Scale prediction): train_var.py 
 - Inputs: tokens_multiscale_maps.npz from tokenize_multiscale_maps.py, Trained VQ-VAE codebook (to align token embeddings), classes.json.
-- Methods: a VAR transformer is trained via next-scale prediction during training(Teacher Forcing), standard cross-entropy loss is used, Teacher prefix (TP) and COARSE_K are used during sampling
+- Methods: a VAR transformer is trained via next-scale prediction during training(Teacher Forcing), standard cross-entropy loss is used, Teacher prefix (TP) and COARSE_K are used during sampling（Autoregressive sampling starting from the Kth position）
+- Outputs: ar-ckpt-best.pth (model weight), loss curves.
 
-Training of VAR:
-Not yet implemented
+
+Multi-scale sampling: sample_var.py
+- Inputs: ar-ckpt-best.pth from VAR, tokens_multiscale_maps.npz from tokenize_multiscale_maps.py, best.pth from vqvae
+- Methods: Sweep across the 10 scale boundaries (K). For each K, generate: TP (Teacher Prefix) mode: random real prefix tokens, NOP (no prefix) mode: prefix from position prior.
+- Outputs: decoded images with label
+
+
+Evaluate generated samples:
+- Inputs: generated smaples from sample_var.py, VQ-VAE codebook, tokens_multiscale_maps.npz
+- Methods: KID on codebook-embedding features (reported overall and per-scale), Codebook usage & entropy: usage ratio (unique token coverage) and entropy of token distribution, overall & per-scale
+- Outputs: metrics_overall.csv, metrics_per_scale.csv
+
