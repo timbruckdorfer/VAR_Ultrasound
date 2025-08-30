@@ -11,7 +11,7 @@ VAR_Ultrasound/
 ├── tokenize_multiscale_maps.py# export per-scale 2D token maps from VQ-VAE
 ├── train_var.py               # train the VAR (next-scale) model
 └── train_vqvae.py             # train+val+test multi-scale VQ-VAE (with metrics & usage plots)
-
+```
 
 
 Implementation of Visual Autoregressive Modeling in Ultrasound Images
