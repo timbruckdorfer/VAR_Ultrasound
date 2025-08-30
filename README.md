@@ -1,14 +1,17 @@
 # VAR_Ultrasound
-.
-├── Data preprocessing/              # data prep scripts / notes (by us)
-├── models/                          # models form github: https://github.com/FoundationVision/VAR
-│   └── basic_vae.py                 
-├── README.md                        # ← this file
-├── eval_var.py                      # evaluate samples: KID, usage, entropy, diversity
-├── sample_var.py                    # sweep sampler across coarse scales + TP/NOP
-├── tokenize_multiscale_maps.py      # export per-scale 2D token maps from VQ-VAE
-├── train_var.py                     # train the VAR (next-scale) model
-└── train_vqvae.py                   # train+val+test multi-scale VQ-VAE (with metrics & usage plots)
+
+```text
+VAR_Ultrasound/
+├── Data preprocessing/        # data prep scripts / notes (by us)
+├── models/                    # models from github: https://github.com/FoundationVision/VAR
+│   └── basic_vae.py
+├── README.md                  # ← this file
+├── eval_var.py                # evaluate samples: KID, usage, entropy, diversity
+├── sample_var.py              # sweep sampler across coarse scales + TP/NOP
+├── tokenize_multiscale_maps.py# export per-scale 2D token maps from VQ-VAE
+├── train_var.py               # train the VAR (next-scale) model
+└── train_vqvae.py             # train+val+test multi-scale VQ-VAE (with metrics & usage plots)
+
 
 
 Implementation of Visual Autoregressive Modeling in Ultrasound Images
@@ -82,9 +85,9 @@ Training of VQ-VAE:
 - Training pipeline for local running with 20 samples per dataset prepared
 - Next step: adjust train script for training with all available data (capped at 1000 images per dataset)
 
-Training of VQ-VAE(Yiping side):
+Training of VQ-VAE(Yiping side: class balancing):
 
 - Dataset statistics:<img width="1200" height="600" alt="per_class_by_split" src="https://github.com/user-attachments/assets/842876f5-5494-4fe4-9bdc-27536b4413fe" />
-
+- 
 Training of VAR:
 Not yet implemented
