@@ -119,10 +119,16 @@ Multi-scale sampling: sample_var.py
 Results:
 
 Multi-scale VQVAE reconstruction results: 
-The left image reports the multi-scale VQ-VAE training curves decomposed into the sum MSE term (per-image sum of pixel-wise squared errors), the vector-quantization loss, and their total. The right image overlays training and validation reconstruction losses.
 
+This image reports the multi-scale VQ-VAE training curves decomposed into the sum MSE term (per-image sum of pixel-wise squared errors), the vector-quantization loss, and their total. 
+<p align="center">
 <img width="459" height="331" alt="image" src="https://github.com/user-attachments/assets/93f90e4c-151e-4c23-94c8-5222619a48d1" />
+</p>
+
+This image overlays training and validation reconstruction losses.
+<p align="center">
 <img width="498" height="333" alt="image" src="https://github.com/user-attachments/assets/0227fab4-8046-490e-bab5-2e3028c2f82f" />
+</p>
 
 This image shows the comparison of the reconstructed sample with the original sample.
 <p align="center">
