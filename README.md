@@ -4,8 +4,13 @@
 VAR_Ultrasound/
 ├── Data preprocessing/        # data prep scripts / notes (by us)
 ├── models/                    # models from github: https://github.com/FoundationVision/VAR
+│   └── __init__.py
 │   └── basic_vae.py
-│   └── basic_vae.py
+│   └── basic_var.py
+│   └── helpers.py
+│   └── quant.py
+│   └── var.py
+│   └── vqvae.py
 ├── README.md                  # ← this file
 ├── sample_vqvae.py            # sampler multi-scale vqvae reconstruction results
 ├── sample_var.py              # sampler across coarse scales per class
@@ -111,9 +116,31 @@ Multi-scale sampling: sample_var.py
 - Methods: Sweep across the 10 scale boundaries (K). For each K, generate: TP (Teacher Prefix) mode: random real prefix tokens, NOP (no prefix) mode: prefix from position prior.
 - Outputs: decoded images with label
 
+Results:
 
-Evaluate generated samples:
-- Inputs: generated smaples from sample_var.py, VQ-VAE codebook, tokens_multiscale_maps.npz
-- Methods: KID on codebook-embedding features (reported overall and per-scale), Codebook usage & entropy: usage ratio (unique token coverage) and entropy of token distribution, overall & per-scale
-- Outputs: metrics_overall.csv, metrics_per_scale.csv
+Multi-scale VQVAE reconstruction results: 
+The left image reports the multi-scale VQ-VAE training curves decomposed into the sum MSE term (per-image sum of pixel-wise squared errors), the vector-quantization loss, and their total. The right image overlays training and validation reconstruction losses.
 
+<img width="459" height="331" alt="image" src="https://github.com/user-attachments/assets/93f90e4c-151e-4c23-94c8-5222619a48d1" />
+<img width="498" height="333" alt="image" src="https://github.com/user-attachments/assets/0227fab4-8046-490e-bab5-2e3028c2f82f" />
+
+This image shows the comparison of the reconstructed sample with the original sample.
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/2290cf50-2a89-45b8-9023-ec168917e473" alt="demo" width="420">
+</p>
+
+VAR: Next-Scale Training and Sampling results:
+
+This image plots the mean next-scale cross-entropy over epochs for training and validation
+<p align="center">
+<img src="https://github.com/user-attachments/assets/e2d21073-a292-4044-b2c7-35c6711500c0" alt="image" width="434" >
+</p>
+The image shows the generation results for different K. Fetal head(high), Heart(middle), Thyroid-Gland(low) 
+<p align="center">
+<img src="https://github.com/user-attachments/assets/b668fc6b-696c-4de9-bc7c-8e5d165ebb04" alt="image" width="441" >
+</p>
+
+This image shows the Breast-Malignant(1-st row) generation with scale k = 2, Breast-Malignant(2-nd row), Breast–Benign(3-rd row), Kidney-Normal(4-th row), Liver-Benign(5-th row) generation with scale k = 7 and the rightmost image is the real (ground-truth) one.
+<p align="center">
+<img src="https://github.com/user-attachments/assets/d5cac326-ed12-4c03-ba07-219e31ab7f4f" alt="image" width="432" >
+</p>
