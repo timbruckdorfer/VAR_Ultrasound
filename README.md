@@ -5,12 +5,12 @@ VAR_Ultrasound/
 ├── Data preprocessing/        # data prep scripts / notes (by us)
 ├── models/                    # models from github: https://github.com/FoundationVision/VAR
 │   └── basic_vae.py
+│   └── basic_vae.py
 ├── README.md                  # ← this file
-├── eval_var.py                # evaluate samples: KID, usage, entropy, diversity
-├── sample_var.py              # sweep sampler across coarse scales + TP/NOP
-├── tokenize_multiscale_maps.py# export per-scale 2D token maps from VQ-VAE
+├── sample_vqvae.py            # sampler multi-scale vqvae reconstruction results
+├── sample_var.py              # sampler across coarse scales per class
 ├── train_var.py               # train the VAR (next-scale) model
-└── train_vqvae.py             # train+val+test multi-scale VQ-VAE (with metrics & usage plots)
+└── train_vqvae.py             # train+val multi-scale VQ-VAE (with metrics & usage plots)
 ```
 
 
